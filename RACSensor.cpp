@@ -2,10 +2,10 @@
 #include "RACSensor.h"
 
 
-RACSensor::RACSensor(int pin, String sensorId){
+RACSensor::RACSensor(int pin, String sId){
     pinMode(pin, INPUT);
     _pin = pin;
-    sensorId = sensorId;
+    sensorId = sId;
     _value = -1;
 }
 

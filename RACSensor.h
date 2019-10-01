@@ -6,7 +6,7 @@
 class RACSensor
 {
   public:
-    RACSensor(int pin, String sensorId);
+    RACSensor(int pin, String sId);
     void addMetric();
     float getMetric();
     String sensorId;

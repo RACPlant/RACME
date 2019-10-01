@@ -2,8 +2,8 @@
 #include "RACMonitor.h"
 
 
-RACMonitor::RACMonitor(String arduinoId, int max_sensors){
-    arduinoId = arduinoId;
+RACMonitor::RACMonitor(String aId, int max_sensors){
+    arduinoId = aId;
     max_sensors = max_sensors;
     i_sensors = -1;
      sensors =  (RACSensor**) malloc (max_sensors*sizeof(RACSensor));
@@ -19,15 +19,15 @@ void RACMonitor::addSensor(RACSensor* sensor){
     
 }
 
-String RACMonitor::createMessage(){
-  String message = "";
-  for(int i = 0; i <= i_sensors; i++){
-    message = message + sensors[i]->sensorId+"="+sensors[i]->getMetric()+";";
-    }
+String RACMonitor::createMessage(int i_sensor){
+  String message = arduinoId+","+sensors[i_sensor]->sensorId+","+sensors[i_sensor]->getMetric();
     return message;
 }
 
 void RACMonitor::sendMetrics(){
-    String message = createMessage();
-    Serial.print(message);
+  for(int i=0; i<= i_sensors; i++){
+    String message = createMessage(i);
+    Serial.println(message);
+    }
+    
 }

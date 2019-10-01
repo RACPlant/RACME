@@ -6,12 +6,12 @@
 class RACMonitor
 {
   public:
-    RACMonitor(String arduinoId, int n_max_sensors);
+    RACMonitor(String aId, int n_max_sensors);
     ~RACMonitor();
     void addSensor(RACSensor* sensor);
     void sendMetrics();
   private:
-    String createMessage();
+    String createMessage(int i_sensor);
     String arduinoId;
     int i_sensors;
     int max_sensors;
