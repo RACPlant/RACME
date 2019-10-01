@@ -1,6 +1,6 @@
 #include"RACSensor.h"
 
-RACSensor hs(3, "Humidade");
+RACSensor hs(3, "H");
 
 void setup() {
   Serial.begin(9600);
@@ -9,7 +9,7 @@ void setup() {
 
 void loop() {
   hs.addMeasure();
-  delay(100);
+  delay(10);
   
 
 }
