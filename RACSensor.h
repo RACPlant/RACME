@@ -2,6 +2,8 @@
 #define RACSensor_h
 
 
+#include <Arduino.h>
+
 
 class RACSensor
 {
