@@ -11,8 +11,8 @@ private:
 public:
     RACProtocol();
     String readInput();
-    bool sendMessages(String * messagesToSend, int n_messages);
-    bool sendMessage(String messageToSend);
+    void sendMessages(String * messagesToSend, int n_messages);
+    void sendMessage(String messageToSend);
 
 };
 

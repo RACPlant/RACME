@@ -8,24 +8,24 @@ RACProtocol::RACProtocol()
     endMessage = "endMessage";
 }
 
-bool RACProtocol::sendMessages(String * messagesToSend, int n_messages){
+void RACProtocol::sendMessages(String * messagesToSend, int n_messages){
   if(Serial.availableForWrite()>0){
-    Serial.println(startMessage);
+    Serial.write(startMessage);
     for (int i = 0; i<n_messages; i++){
-        Serial.println(messagesToSend[i]);
+        Serial.write(messagesToSend[i]);
     }
-    Serial.println(endMessage);
+    Serial.write(endMessage);
     return true;
   }else{
     return false;  
   }
 }
 
-bool RACProtocol::sendMessage(String messageToSend){
+void RACProtocol::sendMessage(String messageToSend){
   if(Serial.availableForWrite()>0){
-    Serial.println(startMessage);
-    Serial.println(messageToSend);
-    Serial.println(endMessage);
+    Serial.write(startMessage);
+    Serial.write(messageToSend);
+    Serial.write(endMessage);
     return true;
   }else{
     return false;  
