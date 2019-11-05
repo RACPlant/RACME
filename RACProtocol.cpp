@@ -10,26 +10,27 @@ RACProtocol::RACProtocol()
 
 void RACProtocol::sendMessages(String * messagesToSend, int n_messages){
   if(Serial.availableForWrite()>0){
-    Serial.write(startMessage);
+    Serial.print(startMessage+";");
     for (int i = 0; i<n_messages; i++){
-        Serial.write(messagesToSend[i]);
+        Serial.print(messagesToSend[i]+";");
     }
-    Serial.write(endMessage);
-    return true;
-  }else{
-    return false;  
+    Serial.print(endMessage);
   }
 }
 
 void RACProtocol::sendMessage(String messageToSend){
-  if(Serial.availableForWrite()>0){
-    Serial.write(startMessage);
-    Serial.write(messageToSend);
-    Serial.write(endMessage);
-    return true;
-  }else{
-    return false;  
-  }
+  
+  String messageArray[1] = {messageToSend};
+  sendMessages(messageArray, 1);
+//  
+//  if(Serial.availableForWrite()>0){
+//    Serial.println(startMessage);
+//    Serial.println(messageToSend);
+//    Serial.println(endMessage);
+//    return true;
+//  }else{
+//    return false;  
+//  }
 }
 
 String RACProtocol::readInput(){
