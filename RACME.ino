@@ -60,5 +60,12 @@ void loop() {
     executor.processPlan(msg);
   }
 
+  if(msg == "listResources"){
+    executor.listPumps();
+    monit.listSensors();  
+  }
+
+  
+
   
 }

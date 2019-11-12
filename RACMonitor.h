@@ -6,7 +6,6 @@
 #include <Arduino.h>
 
 const int N_SENSORS=6;
-const int DALAY_BETWEEN_MESSAGES=1000;
 
 
 class RACMonitor
@@ -15,6 +14,7 @@ class RACMonitor
     RACMonitor(String aId, RACProtocol* protocol);
     void addSensor(RACSensor* sensor);
     void sendMetrics();
+    void listSensors();
   private:
     String createMessage(int i_sensor, int i_metric);
     String arduinoId;

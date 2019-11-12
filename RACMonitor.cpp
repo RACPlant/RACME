@@ -16,7 +16,6 @@ void RACMonitor::sendMetrics(){
       messages[j] = createMessage(i,j);
     }
       protocol->sendMessages(messages, BUFFER_SIZE);
-      delay(DALAY_BETWEEN_MESSAGES);
   }
     
 }
@@ -25,6 +24,14 @@ void RACMonitor::addSensor(RACSensor* sensor){
         i_sensors ++;
         sensors[i_sensors] = sensor;
     
+}
+
+void RACMonitor::listSensors(){
+  String messages[i_sensors+1];
+  for(int i=0;i<=i_sensors;i++){
+    messages[i]=  sensors[i]->sensorId;
+  }
+  protocol->sendMessages(messages,i_sensors+1);  
 }
 
 String RACMonitor::createMessage(int i_sensor, int i_metric){

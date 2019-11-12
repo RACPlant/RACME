@@ -20,6 +20,7 @@ public:
     void waterById(int timeSeconds, String pump);
     void addPump(RACPump *p);
     void processPlan(String plan);
+    void listPumps();
 };
 
 #endif

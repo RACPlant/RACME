@@ -15,6 +15,9 @@ void RACProtocol::sendMessages(String * messagesToSend, int n_messages){
         Serial.print(messagesToSend[i]+";");
     }
     Serial.print(endMessage);
+
+    delay(DALAY_BETWEEN_MESSAGES);
+
   }
 }
 
