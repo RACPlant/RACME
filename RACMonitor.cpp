@@ -2,7 +2,7 @@
 #include "RACMonitor.h"
 
 
-RACMonitor::RACMonitor(String aId, RACProtocol* p){
+RACMonitor::RACMonitor(String aId, SerialProtocol* p){
     arduinoId = aId;
     max_sensors = max_sensors;
     i_sensors = -1;

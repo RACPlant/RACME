@@ -2,7 +2,7 @@
 #define RACPump_h
 
 #include <Arduino.h>
-#include "RACProtocol.h"
+#include "SerialProtocol.h"
 
 class RACPump
 {

@@ -2,7 +2,7 @@
 #define RACMonitor_h
 
 #include "RACSensor.h"
-#include "RACProtocol.h"
+#include "SerialProtocol.h"
 #include <Arduino.h>
 
 const int N_SENSORS=6;
@@ -11,7 +11,7 @@ const int N_SENSORS=6;
 class RACMonitor
 {
   public:
-    RACMonitor(String aId, RACProtocol* protocol);
+    RACMonitor(String aId, SerialProtocol* protocol);
     void addSensor(RACSensor* sensor);
     void sendMetrics();
     void listSensors();
@@ -20,7 +20,7 @@ class RACMonitor
     String arduinoId;
     int i_sensors;
     int max_sensors;
-    RACProtocol* protocol;
+    SerialProtocol* protocol;
     RACSensor * sensors[N_SENSORS];
 };
 

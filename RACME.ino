@@ -1,23 +1,23 @@
 #include "RACMonitor.h"
 #include "RACSensor.h"
-#include "RACProtocol.h"
+#include "SerialProtocol.h"
 #include "RACExecutor.h"
 #include "RACPump.h"
 
-RACSensor s1(0, "T");
-RACSensor s2(1, "R");
+RACSensor s1(0, "t");
+RACSensor s2(1, "r");
 
-RACSensor s3(0, "H1");
-RACSensor s4(0, "H2");
-RACSensor s5(0, "H3");
-RACSensor s6(0, "H4");
+RACSensor s3(0, "h1");
+RACSensor s4(0, "h2");
+RACSensor s5(0, "h3");
+RACSensor s6(0, "h4");
 
 RACPump pump1(2, "p1");
 RACPump pump2(3, "p2");
 RACPump pump3(3, "p3");
 RACPump pump4(3, "p4");
 
-RACProtocol* p = new RACProtocol();
+SerialProtocol* p = new SerialProtocol();
 
 RACExecutor executor("arduino_1", p);
 RACMonitor monit("arduino_1", p);

@@ -1,14 +1,14 @@
 #include <Arduino.h>
 
-#include "RACProtocol.h"
+#include "SerialProtocol.h"
 
-RACProtocol::RACProtocol()
+SerialProtocol::SerialProtocol()
 {
     startMessage = "startMessage";
     endMessage = "endMessage";
 }
 
-void RACProtocol::sendMessages(String * messagesToSend, int n_messages){
+void SerialProtocol::sendMessages(String * messagesToSend, int n_messages){
   if(Serial.availableForWrite()>0){
     Serial.print(startMessage+";");
     for (int i = 0; i<n_messages; i++){
@@ -21,13 +21,13 @@ void RACProtocol::sendMessages(String * messagesToSend, int n_messages){
   }
 }
 
-void RACProtocol::sendMessage(String messageToSend){
+void SerialProtocol::sendMessage(String messageToSend){
   
   String messageArray[1] = {messageToSend};
   sendMessages(messageArray, 1);
 }
 
-String RACProtocol::readInput(){
+String SerialProtocol::readInput(){
     String input =  Serial.readString();
     input.trim();
     return input;

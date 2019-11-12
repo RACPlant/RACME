@@ -2,7 +2,7 @@
 #define RACExecutor_h
 
 #include <Arduino.h>
-#include "RACProtocol.h"
+#include "SerialProtocol.h"
 #include "RACPump.h"
 
 const int N_EXECUTORS=4;
@@ -12,11 +12,11 @@ class RACExecutor
 private:
     RACPump* pumps[N_EXECUTORS];
     int i_pumps;
-    RACProtocol* protocol;
+    SerialProtocol* protocol;
     RACPump* findPumpById(String id);
     String arduinoId;
 public:
-    RACExecutor(String aId, RACProtocol* p );
+    RACExecutor(String aId, SerialProtocol* p );
     void waterById(int timeSeconds, String pump);
     void addPump(RACPump *p);
     void processPlan(String plan);

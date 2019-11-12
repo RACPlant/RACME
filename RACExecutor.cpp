@@ -1,6 +1,6 @@
 #include "RACExecutor.h"
 
-RACExecutor::RACExecutor(String aId, RACProtocol* p ){
+RACExecutor::RACExecutor(String aId, SerialProtocol* p ){
     arduinoId = aId;
     i_pumps = -1;
     protocol = p;

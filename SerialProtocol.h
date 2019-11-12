@@ -1,18 +1,18 @@
-#ifndef RACProtocol_h
-#define RACProtocol_h
+#ifndef SerialProtocol_h
+#define SerialProtocol_h
 
 #include <Arduino.h>
 
-const int DALAY_BETWEEN_MESSAGES=1000;
+const int DALAY_BETWEEN_MESSAGES=5000;
 
 
-class RACProtocol
+class SerialProtocol
 {
 private:
     String startMessage;
     String endMessage;
 public:
-    RACProtocol();
+    SerialProtocol();
     String readInput();
     void sendMessages(String * messagesToSend, int n_messages);
     void sendMessage(String messageToSend);
