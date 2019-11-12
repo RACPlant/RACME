@@ -6,13 +6,20 @@ RACSensor::RACSensor(int pin, String sId){
     pinMode(pin, INPUT);
     _pin = pin;
     sensorId = sId;
-    _value = -1;
+
+    for (int i=0;i<BUFFER_SIZE;i++){
+      _values[i]=-1;
+    }
+    
 }
 
 void RACSensor::addMetric(){
-    _value = analogRead(_pin);
+    for (int i=0;i++;i<(BUFFER_SIZE - 1)){
+      _values[i+1] = _values[i];
+    }
+    _values[0]=analogRead(_pin);
 }
 
-float RACSensor::getMetric(){
-    return _value;
+int* RACSensor::getMetrics(){
+    return _values;
 }

@@ -28,11 +28,12 @@ void RACExecutor::waterById(int timeSeconds, String pump){
 }
 
 void RACExecutor::processPlan(String plan){
+//  water:pump_1:3
     plan.replace("water:","");
-    int i_first_comma = plan.indexOf(',');
+    int i_first_comma = plan.indexOf(':');
     String pumpId = plan.substring(0,i_first_comma);
     int timeSeconds = plan.substring(i_first_comma+1).toInt();
     waterById(timeSeconds, pumpId);
-    protocol->sendMessage("done:"+arduinoId+","+pumpId+","+timeSeconds);
+    protocol->sendMessage(arduinoId+","+pumpId+","+timeSeconds);
  
 }
