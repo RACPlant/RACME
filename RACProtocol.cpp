@@ -22,15 +22,6 @@ void RACProtocol::sendMessage(String messageToSend){
   
   String messageArray[1] = {messageToSend};
   sendMessages(messageArray, 1);
-//  
-//  if(Serial.availableForWrite()>0){
-//    Serial.println(startMessage);
-//    Serial.println(messageToSend);
-//    Serial.println(endMessage);
-//    return true;
-//  }else{
-//    return false;  
-//  }
 }
 
 String RACProtocol::readInput(){

@@ -4,17 +4,18 @@
 
 #include <Arduino.h>
 
+const int BUFFER_SIZE=10;
 
 class RACSensor
 {
   public:
     RACSensor(int pin, String sId);
     void addMetric();
-    float getMetric();
+    int* getMetrics();
     String sensorId;
   private:
     int _pin;
-    int _value;
+    int _values[BUFFER_SIZE];
 };
 
 #endif

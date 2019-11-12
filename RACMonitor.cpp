@@ -2,20 +2,22 @@
 #include "RACMonitor.h"
 
 
-RACMonitor::RACMonitor(String aId, int n_max_sensors, RACProtocol* p){
+RACMonitor::RACMonitor(String aId, RACProtocol* p){
     arduinoId = aId;
     max_sensors = max_sensors;
     i_sensors = -1;
-    sensors =  (RACSensor**) malloc (max_sensors*sizeof(RACSensor));
     protocol = p;
 }
 
 void RACMonitor::sendMetrics(){
-         String messages[i_sensors+1];
   for(int i=0; i<= i_sensors; i++){
-    messages[i] = createMessage(i);
+    String messages[BUFFER_SIZE];
+    for (int j=0;j<BUFFER_SIZE;j++){
+      messages[j] = createMessage(i,j);
     }
-  protocol->sendMessages(messages, i_sensors+1);
+      protocol->sendMessages(messages, BUFFER_SIZE);
+      delay(DALAY_BETWEEN_MESSAGES);
+  }
     
 }
 
@@ -25,7 +27,7 @@ void RACMonitor::addSensor(RACSensor* sensor){
     
 }
 
-String RACMonitor::createMessage(int i_sensor){
-  String message = arduinoId+","+sensors[i_sensor]->sensorId+","+sensors[i_sensor]->getMetric();
+String RACMonitor::createMessage(int i_sensor, int i_metric){
+  String message = arduinoId+","+sensors[i_sensor]->sensorId+","+String(sensors[i_sensor]->getMetrics()[i_metric]);
     return message;
 }

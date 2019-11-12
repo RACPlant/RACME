@@ -1,11 +1,9 @@
 #include "RACExecutor.h"
 
-RACExecutor::RACExecutor(String aId, int n_max_pumps, RACProtocol* p ){
-    max_pumps = n_max_pumps;
+RACExecutor::RACExecutor(String aId, RACProtocol* p ){
     arduinoId = aId;
     i_pumps = -1;
     protocol = p;
-    pumps = (RACPump **) malloc (max_pumps*sizeof(RACPump));
 }
 
 void RACExecutor::addPump(RACPump *p){
