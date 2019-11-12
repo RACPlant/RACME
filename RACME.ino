@@ -65,7 +65,5 @@ void loop() {
     monit.listSensors();  
   }
 
-  
-
-  
+  delay(1000);
 }

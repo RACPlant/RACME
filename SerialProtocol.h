@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-const int DALAY_BETWEEN_MESSAGES=5000;
+const int DALAY_BETWEEN_MESSAGES=500;
 
 
 class SerialProtocol
