@@ -4,18 +4,27 @@
 #include "RACExecutor.h"
 #include "RACPump.h"
 
-RACSensor s1(0, "t");
-RACSensor s2(1, "r");
 
-RACSensor s3(0, "h1");
-RACSensor s4(0, "h2");
-RACSensor s5(0, "h3");
-RACSensor s6(0, "h4");
+//#include <DHT.h>
+//
+//#define DHTPIN 7
+//#define DHTTYPE DHT22   // Sensor DHT 22  (AM2302)
+//
+
+
+DHT dht(7, DHT22);
+
+RACSensor s1(0, "r");
+RACSensor s2(1, "h1");
+//RACSensor s3(0, "h2");
+//RACSensor s4(0, "h3");
+//RACSensor s5(0, "h4");
 
 RACPump pump1(2, "p1");
-RACPump pump2(3, "p2");
-RACPump pump3(3, "p3");
-RACPump pump4(3, "p4");
+//RACPump pump2(3, "p2");
+//RACPump pump3(3, "p3");
+//RACPump pump4(3, "p4");
+
 
 SerialProtocol* p = new SerialProtocol();
 
@@ -23,33 +32,27 @@ RACExecutor executor("arduino_1", p);
 RACMonitor monit("arduino_1", p);
 
 void setup() {
-
   Serial.begin(9600);
   monit.addSensor(&s1);
   monit.addSensor(&s2);
-  monit.addSensor(&s3);
-  monit.addSensor(&s4);
-  monit.addSensor(&s5);
-  monit.addSensor(&s6);
+//  monit.addSensor(&s4);
+//  monit.addSensor(&s5);
 
   executor.addPump(&pump1);
-  executor.addPump(&pump2);
-  executor.addPump(&pump3);
-  executor.addPump(&pump4);
-
+//  executor.addPump(&pump2);
+//  executor.addPump(&pump3);
+//  executor.addPump(&pump4);
+  
+   dht.begin();
+   monit.addTemperatureSensor("t", &dht);
 }
 
 void loop() {
 
-  s1.addMetric();
-  s2.addMetric();
-  s3.addMetric();
-  s4.addMetric();
-  s5.addMetric();
-  s6.addMetric();
+  delay(2000);
 
-
-
+  monit.monit();
+  
   String msg = p->readInput();
 
   if(msg == "getMetrics"){
@@ -65,5 +68,4 @@ void loop() {
     monit.listSensors();  
   }
 
-  delay(1000);
 }
