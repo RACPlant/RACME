@@ -36,7 +36,7 @@ void RACExecutor::listPumps(){
 void RACExecutor::processPlan(String plan){
 //  water:pump_id:time
     plan.replace("water:","");
-    int i_first_comma = plan.indexOf(',');
+    int i_first_comma = plan.indexOf(':');
     String pumpId = plan.substring(0,i_first_comma);
     int timeSeconds = plan.substring(i_first_comma+1).toInt();
     waterById(timeSeconds, pumpId);
