@@ -14,7 +14,7 @@
 
 DHT dht(7, DHT22);
 
-RACSensor s1(0, "r");
+RACSensor s1(0, "r1");
 RACSensor s2(1, "h1");
 //RACSensor s3(0, "h2");
 //RACSensor s4(0, "h3");
@@ -28,8 +28,8 @@ RACPump pump1(2, "p1");
 
 SerialProtocol* p = new SerialProtocol();
 
-RACExecutor executor("arduino_1", p);
-RACMonitor monit("arduino_1", p);
+RACExecutor executor("0", p);
+RACMonitor monit("0", p);
 
 void setup() {
   Serial.begin(9600);
@@ -44,7 +44,7 @@ void setup() {
 //  executor.addPump(&pump4);
   
    dht.begin();
-   monit.addTemperatureSensor("t", &dht);
+   monit.addTemperatureSensor("t1", &dht);
 }
 
 void loop() {
